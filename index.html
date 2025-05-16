@@ -1,777 +1,163 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Globalizacja: szansa czy zagrożenie?</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            color: #e0e0e0;
-            background-color: #121212;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            background-color: #0f1a2a;
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-            box-shadow: 0 2px 15px rgba(0, 132, 255, 0.3);
-        }
-        
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            color: #4da6ff;
-        }
-        
-        .subtitle {
-            font-style: italic;
-            font-weight: 300;
-            margin-top: 10px;
-            color: #a0c6ff;
-        }
-        
-        nav {
-            background-color: #152238;
-            padding: 10px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 81, 255, 0.4);
-        }
-        
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        nav li {
-            margin: 0 15px;
-        }
-        
-        nav a {
-            color: #99c1ff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            display: block;
-            padding: 8px 12px;
-            border-radius: 5px;
-        }
-        
-        nav a:hover {
-            color: white;
-            background-color: #2a4780;
-            transform: translateY(-2px);
-        }
-        
-        section {
-            background-color: #1a1a2e;
-            margin: 20px 0;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 80, 255, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 110, 255, 0.3);
-        }
-        
-        h2 {
-            color: #4da6ff;
-            border-bottom: 2px solid #1a75ff;
-            padding-bottom: 10px;
-        }
-        
-        .advantages-disadvantages {
-            display: flex;
-            justify-content: space-between;
-            margin: 30px 0;
-        }
-        
-        .advantages, .disadvantages {
-            width: 48%;
-            padding: 20px;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-        }
-        
-        .advantages:hover, .disadvantages:hover {
-            transform: scale(1.03);
-        }
-        
-        .advantages {
-            background-color: #162447;
-            border-left: 4px solid #4da6ff;
-        }
-        
-        .disadvantages {
-            background-color: #2a1a28;
-            border-left: 4px solid #ff5c7c;
-        }
-        
-        .advantages h3 {
-            color: #4da6ff;
-        }
-        
-        .disadvantages h3 {
-            color: #ff5c7c;
-        }
-        
-        ul.pros-cons {
-            padding-left: 20px;
-        }
-        
-        .pros-cons li {
-            margin-bottom: 10px;
-        }
-        
-        .chart-container {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .case-study {
-            background-color: #1c2541;
-            padding: 20px;
-            margin: 20px 0;
-            border-left: 4px solid #3a7bd5;
-            border-radius: 5px;
-        }
-        
-        .conclusion {
-            background-color: #0f2557;
-            padding: 30px;
-            text-align: center;
-            font-size: 1.1rem;
-            font-weight: 300;
-            margin-top: 40px;
-            border-radius: 8px;
-            box-shadow: inset 0 0 20px rgba(59, 130, 246, 0.5);
-        }
-        
-        footer {
-            background-color: #0f1a2a;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            box-shadow: 0 -2px 15px rgba(0, 132, 255, 0.3);
-        }
-        
-        /* Quiz styling */
-        .quiz-container {
-            background-color: #152238;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 89, 255, 0.4);
-            margin-top: 40px;
-        }
-        
-        .quiz-question {
-            margin-bottom: 30px;
-            padding: 20px;
-            background-color: #1a2c4d;
-            border-radius: 8px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        .quiz-title {
-            color: #4da6ff;
-            text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-        }
-        
-        .quiz-options {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        
-        .quiz-option {
-            padding: 12px 15px;
-            background-color: #25395e;
-            border: 2px solid #3b5998;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: #e0e0e0;
-        }
-        
-        .quiz-option:hover {
-            background-color: #304878;
-            transform: translateY(-2px);
-        }
-        
-        .quiz-option.selected {
-            background-color: #1d65d9;
-            border-color: #4da6ff;
-            color: white;
-        }
-        
-        .quiz-option.correct {
-            background-color: #0d904f;
-            border-color: #0bca6c;
-            color: white;
-        }
-        
-        .quiz-option.incorrect {
-            background-color: #b91c1c;
-            border-color: #ef4444;
-            color: white;
-        }
-        
-        .quiz-feedback {
-            margin-top: 15px;
-            padding: 10px;
-            border-radius: 5px;
-            display: none;
-        }
-        
-        .quiz-feedback.correct {
-            background-color: rgba(13, 144, 79, 0.2);
-            border: 1px solid #0bca6c;
-            color: #2ecc71;
-        }
-        
-        .quiz-feedback.incorrect {
-            background-color: rgba(185, 28, 28, 0.2);
-            border: 1px solid #ef4444;
-            color: #f87171;
-        }
-        
-        button.quiz-submit {
-            padding: 12px 25px;
-            background-color: #3b82f6;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 20px;
-            display: block;
-            width: 100%;
-        }
-        
-        button.quiz-submit:hover {
-            background-color: #2563eb;
-            transform: translateY(-2px);
-        }
-        
-        button.quiz-next {
-            padding: 12px 25px;
-            background-color: #3b82f6;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 20px;
-            display: none;
-            width: 100%;
-        }
-        
-        button.quiz-next:hover {
-            background-color: #2563eb;
-            transform: translateY(-2px);
-        }
-        
-        .quiz-result {
-            background-color: #152238;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 89, 255, 0.4);
-            margin-top: 40px;
-            text-align: center;
-            display: none;
-        }
-        
-        .quiz-score {
-            font-size: 2rem;
-            color: #4da6ff;
-            margin-bottom: 20px;
-        }
-        
-        .quiz-restart {
-            padding: 12px 25px;
-            background-color: #3b82f6;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .quiz-restart:hover {
-            background-color: #2563eb;
-            transform: translateY(-2px);
-        }
-        
-        /* Animation for sections */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .fade-in.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Glowing effect */
-        @keyframes glow {
-            0% {
-                box-shadow: 0 0 5px rgba(77, 166, 255, 0.5);
-            }
-            50% {
-                box-shadow: 0 0 20px rgba(77, 166, 255, 0.8);
-            }
-            100% {
-                box-shadow: 0 0 5px rgba(77, 166, 255, 0.5);
-            }
-        }
-        
-        .glow {
-            animation: glow 3s infinite;
-        }
-        
-        @media (max-width: 768px) {
-            .advantages-disadvantages {
-                flex-direction: column;
-            }
-            
-            .advantages, .disadvantages {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            nav li {
-                margin: 5px 0;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Globalizacja: Szansa czy Zagrożenie?</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <header class="animate__animated animate__fadeIn">
-        <div class="container">
-            <h1>Globalizacja</h1>
-            <p class="subtitle">Szansa czy zagrożenie dla współczesnego świata?</p>
-        </div>
-    </header>
-    
-    <nav>
-        <ul>
-            <li><a href="#definicja">Definicja</a></li>
-            <li><a href="#historia">Historia</a></li>
-            <li><a href="#aspekty">Aspekty globalizacji</a></li>
-            <li><a href="#szanse">Szanse</a></li>
-            <li><a href="#zagrozenia">Zagrożenia</a></li>
-            <li><a href="#przyklad">Studium przypadku</a></li>
-            <li><a href="#wnioski">Wnioski</a></li>
-            <li><a href="#quiz">Quiz</a></li>
-        </ul>
-    </nav>
-    
-    <div class="container">
-        <section id="definicja" class="fade-in">
-            <h2>Czym jest globalizacja?</h2>
-            <p>Globalizacja to proces charakteryzujący się rosnącym przepływem towarów, usług, kapitału, informacji, idei i ludzi ponad granicami państwowymi. Prowadzi do coraz większej integracji gospodarek krajowych z gospodarką światową oraz zwiększenia wzajemnych zależności między państwami.</p>
-            <p>Globalizacja ma wpływ na niemal wszystkie aspekty naszego życia - od gospodarki i polityki, przez kulturę i środowisko naturalne, aż po życie codzienne. Proces ten zintensyfikował się szczególnie w ostatnich dekadach dzięki rozwojowi technologii informacyjnych i komunikacyjnych.</p>
-        </section>
-        
-        <section id="historia" class="fade-in">
-            <h2>Historia globalizacji</h2>
-            <p>Chociaż termin "globalizacja" jest stosunkowo nowy, sam proces ma długą historię:</p>
-            <ul>
-                <li><strong>XV-XVIII wiek</strong> - Wielkie odkrycia geograficzne, rozwój handlu międzykontynentalnego.</li>
-                <li><strong>XIX wiek</strong> - Rewolucja przemysłowa, kolonializm, rozwój transportu i komunikacji.</li>
-                <li><strong>I połowa XX wieku</strong> - Okresy wzrostu i załamania globalizacji spowodowane wojnami światowymi i Wielkim Kryzysem.</li>
-                <li><strong>Po II wojnie światowej</strong> - Utworzenie instytucji międzynarodowych (ONZ, GATT/WTO, MFW), wzrost handlu międzynarodowego.</li>
-                <li><strong>Lata 80. i 90. XX wieku</strong> - Liberalizacja rynków, upadek bloku komunistycznego, rewolucja informacyjna.</li>
-                <li><strong>XXI wiek</strong> - Intensyfikacja procesów globalizacyjnych, rozwój gospodarki cyfrowej, ale także rosnące wyzwania i kontestacja globalizacji.</li>
-            </ul>
-        </section>
-        
-        <section id="aspekty" class="fade-in">
-            <h2>Główne aspekty globalizacji</h2>
-            <p>Globalizacja jest zjawiskiem wielowymiarowym, obejmującym różne sfery życia:</p>
-            <ul>
-                <li><strong>Ekonomiczny</strong> - Wolny handel, międzynarodowe przepływy kapitału, działalność korporacji transnarodowych.</li>
-                <li><strong>Polityczny</strong> - Wzrost znaczenia organizacji międzynarodowych, osłabienie suwerenności państw.</li>
-                <li><strong>Kulturowy</strong> - Przepływ idei, wartości, wzorców kulturowych, tendencje do homogenizacji kultury.</li>
-                <li><strong>Społeczny</strong> - Migracje, zmiany demograficzne, nowe formy nierówności społecznych.</li>
-                <li><strong>Technologiczny</strong> - Rozwój technologii informacyjnych i komunikacyjnych, transfer technologii.</li>
-                <li><strong>Ekologiczny</strong> - Globalne problemy środowiskowe, zmiany klimatu, międzynarodowa współpraca ekologiczna.</li>
-            </ul>
-        </section>
-        
-        <section id="szanse-zagrozenia" class="fade-in">
-            <h2>Szanse i zagrożenia globalizacji</h2>
-            <div class="advantages-disadvantages">
-                <div class="advantages animate__animated animate__fadeInLeft" id="szanse">
-                    <h3>Szanse</h3>
-                    <ul class="pros-cons">
-                        <li><strong>Wzrost gospodarczy</strong> - Dostęp do nowych rynków, obniżenie kosztów produkcji, specjalizacja.</li>
-                        <li><strong>Transfer wiedzy i technologii</strong> - Szybsze rozprzestrzenianie się innowacji i nowoczesnych rozwiązań.</li>
-                        <li><strong>Różnorodność kulturowa</strong> - Większa dostępność dóbr kulturalnych z całego świata.</li>
-                        <li><strong>Ograniczenie ubóstwa</strong> - Rozwój gospodarczy państw rozwijających się.</li>
-                        <li><strong>Współpraca międzynarodowa</strong> - Łatwiejsze rozwiązywanie problemów globalnych.</li>
-                        <li><strong>Demokratyzacja</strong> - Promowanie wartości demokratycznych i praw człowieka.</li>
-                        <li><strong>Mobilność</strong> - Swobodniejszy przepływ ludzi, możliwości edukacyjne i zawodowe.</li>
-                    </ul>
-                </div>
-                
-                <div class="disadvantages animate__animated animate__fadeInRight" id="zagrozenia">
-                    <h3>Zagrożenia</h3>
-                    <ul class="pros-cons">
-                        <li><strong>Nierówny podział korzyści</strong> - Pogłębianie się nierówności między państwami i wewnątrz państw.</li>
-                        <li><strong>Utrata tożsamości kulturowej</strong> - Homogenizacja kultury, dominacja kultury masowej.</li>
-                        <li><strong>Problemy ekologiczne</strong> - Niszczenie środowiska naturalnego, zmiany klimatu.</li>
-                        <li><strong>Niestabilność finansowa</strong> - Szybsze rozprzestrzenianie się kryzysów ekonomicznych.</li>
-                        <li><strong>Globalne zagrożenia bezpieczeństwa</strong> - Terroryzm, przestępczość zorganizowana.</li>
-                        <li><strong>Zagrożenia dla suwerenności państw</strong> - Osłabienie roli państwa narodowego.</li>
-                        <li><strong>Problemy społeczne</strong> - Bezrobocie strukturalne, prekariat, migracje ekonomiczne.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        
-        <section id="przyklad" class="fade-in">
-            <h2>Studium przypadku: Polska a globalizacja</h2>
-            <div class="case-study">
-                <p>Transformacja polskiej gospodarki i społeczeństwa po 1989 roku jest dobrym przykładem wpływu procesów globalizacyjnych na państwo postsocjalistyczne.</p>
-                <p><strong>Pozytywne skutki globalizacji dla Polski:</strong></p>
-                <ul>
-                    <li>Napływ bezpośrednich inwestycji zagranicznych</li>
-                    <li>Transfer technologii i know-how</li>
-                    <li>Wzrost wymiany handlowej</li>
-                    <li>Integracja z Unią Europejską</li>
-                    <li>Modernizacja gospodarki</li>
-                    <li>Wzrost możliwości edukacyjnych i zawodowych dla Polaków</li>
-                </ul>
-                <p><strong>Negatywne skutki globalizacji dla Polski:</strong></p>
-                <ul>
-                    <li>Upadek niektórych tradycyjnych gałęzi przemysłu</li>
-                    <li>Emigracja zarobkowa młodych i wykształconych osób</li>
-                    <li>Wzrost nierówności społecznych</li>
-                    <li>Zależność od zagranicznych inwestorów</li>
-                    <li>Wyzwania dla tożsamości kulturowej</li>
-                </ul>
-            </div>
-        </section>
-        
-        <section id="wnioski" class="fade-in">
-            <h2>Wnioski</h2>
-            <p>Globalizacja jest procesem niejednoznacznym, który niesie ze sobą zarówno szanse, jak i zagrożenia. Kluczowe pytanie nie brzmi "czy globalizacja jest dobra czy zła", ale raczej "jak wykorzystać jej pozytywny potencjał i zminimalizować zagrożenia".</p>
-            <p>Należy dążyć do modelu globalizacji, który:</p>
-            <ul>
-                <li>Jest bardziej inkluzywny i sprawiedliwy</li>
-                <li>Respektuje różnorodność kulturową</li>
-                <li>Jest zrównoważony ekologicznie</li>
-                <li>Podlega demokratycznej kontroli</li>
-                <li>Służy dobru wszystkich społeczeństw, a nie tylko elit ekonomicznych</li>
-            </ul>
-            <div class="conclusion glow">
-                <p>Globalizacja to proces, który będzie kontynuowany, ale jego kształt zależy od wyborów politycznych, gospodarczych i społecznych, których dokonujemy. Wyzwaniem dla współczesnych społeczeństw jest wypracowanie takiego modelu globalizacji, który będzie łączył efektywność ekonomiczną z solidarnością społeczną i odpowiedzialnością za środowisko naturalne.</p>
-            </div>
-        </section>
-        
-        <section id="quiz" class="fade-in">
-            <h2>Sprawdź swoją wiedzę o globalizacji</h2>
-            
-            <div class="quiz-container">
-                <h3 class="quiz-title">Quiz: Globalizacja szansa czy zagrożenie?</h3>
-                
-                <div id="question1" class="quiz-question">
-                    <h4>Pytanie 1: Który z poniższych procesów NIE jest bezpośrednio związany z globalizacją?</h4>
-                    <div class="quiz-options">
-                        <div class="quiz-option" data-correct="false">A. Wzrost międzynarodowej wymiany handlowej</div>
-                        <div class="quiz-option" data-correct="false">B. Upowszechnienie technologii informacyjnych</div>
-                        <div class="quiz-option" data-correct="true">C. Zwiększenie roli państwa w gospodarce</div>
-                        <div class="quiz-option" data-correct="false">D. Rozwój korporacji transnarodowych</div>
-                    </div>
-                    <div class="quiz-feedback" id="feedback1"></div>
-                    <button class="quiz-submit" id="submit1">Sprawdź odpowiedź</button>
-                    <button class="quiz-next" id="next1">Następne pytanie</button>
-                </div>
-                
-                <div id="question2" class="quiz-question" style="display: none;">
-                    <h4>Pytanie 2: Które z poniższych stwierdzeń najlepiej oddaje naturę globalizacji?</h4>
-                    <div class="quiz-options">
-                        <div class="quiz-option" data-correct="false">A. Globalizacja jest jednoznacznie pozytywnym zjawiskiem dla wszystkich społeczeństw</div>
-                        <div class="quiz-option" data-correct="false">B. Globalizacja jest szkodliwa dla państw rozwijających się i korzystna dla rozwiniętych</div>
-                        <div class="quiz-option" data-correct="true">C. Globalizacja niesie ze sobą zarówno szanse, jak i zagrożenia, zależne od lokalnego kontekstu</div>
-                        <div class="quiz-option" data-correct="false">D. Globalizacja jest zjawiskiem głównie ekonomicznym, bez większego wpływu na kulturę</div>
-                    </div>
-                    <div class="quiz-feedback" id="feedback2"></div>
-                    <button class="quiz-submit" id="submit2">Sprawdź odpowiedź</button>
-                    <button class="quiz-next" id="next2">Zobacz wynik</button>
-                </div>
-                
-                <div id="quiz-result" class="quiz-result">
-                    <h3>Gratulacje!</h3>
-                    <div class="quiz-score">Twój wynik: <span id="score">0</span>/2</div>
-                    <p id="result-message">Dziękujemy za udział w quizie.</p>
-                    <button class="quiz-restart" id="restart-quiz">Rozwiąż ponownie</button>
-                </div>
-            </div>
-        </section>
+<body class="bg-gray-100 font-sans">
+  <!-- Навигация -->
+  <nav class="bg-blue-600 text-white p-4 sticky top-0 shadow-md">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold">Globalizacja</h1>
+      <ul class="flex space-x-4">
+        <li><a href="#wstep" class="hover:underline">Wstęp</a></li>
+        <li><a href="#szanse" class="hover:underline">Szanse</a></li>
+        <li><a href="#zagrozenia" class="hover:underline">Zagrożenia</a></li>
+        <li><a href="#wnioski" class="hover:underline">Wnioski</a></li>
+        <li><a href="#quiz" class="hover:underline">Quiz</a></li>
+      </ul>
     </div>
-    
-    <footer>
-        <p>Projekt z przedmiotu Wiedza o społeczeństwie - Globalizacja: szansa czy zagrożenie?</p>
-        <p class="animate__animated animate__pulse animate__infinite">&copy; 2025</p>
-    </footer>
+  </nav>
 
-    <script>
-        // Obsługa płynnego przewijania do sekcji
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                window.scrollTo({
-                    top: targetElement.offsetTop - 70,
-                    behavior: 'smooth'
-                });
-            });
+  <!-- Главная секция -->
+  <header class="bg-blue-800 text-white text-center py-16">
+    <div class="container mx-auto">
+      <h1 class="text-4xl font-bold mb-4">Globalizacja: Szansa czy Zagrożenie?</h1>
+      <p class="text-lg">Projekt na przedmiot WOS</p>
+    </div>
+  </header>
+
+  <!-- Секция: Введение -->
+  <section id="wstep" class="py-12">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-semibold mb-6 text-center">Czym jest globalizacja?</h2>
+      <p class="text-lg leading-relaxed">
+        Globalizacja to proces integracji gospodarczej, społecznej, kulturalnej i politycznej na świecie. Polega na zwiększaniu wzajemnych powiązań między krajami, dzięki rozwojowi technologii, komunikacji i handlu międzynarodowego.
+      </p>
+    </div>
+  </section>
+
+  <!-- Секция: Возможности -->
+  <section id="szanse" class="bg-white py-12">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-semibold mb-6 text-center">Szanse globalizacji</h2>
+      <ul class="list-disc pl-6 space-y-4 text-lg">
+        <li><strong>Wzrost gospodarczy:</strong> Globalizacja umożliwia krajom dostęp do nowych rynków, co sprzyja rozwojowi gospodarek.</li>
+        <li><strong>Wymiana kulturalna:</strong> Ludzie mają możliwość poznawania innych kultur, co wzbogaca społeczeństwa.</li>
+        <li><strong>Innowacje technologiczne:</strong> Współpraca międzynarodowa przyspiesza rozwój nowych technologii.</li>
+        <li><strong>Dostęp do towarów:</strong> Konsumenci mogą korzystać z produktów i usług z całego świata.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Секция: Угрозы -->
+  <section id="zagrozenia" class="py-12">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-semibold mb-6 text-center">Zagrożenia globalizacji</h2>
+      <ul class="list-disc pl-6 space-y-4 text-lg">
+        <li><strong>Nierówności społeczne:</strong> Globalizacja może pogłębiać różnice między bogatymi a biednymi krajami.</li>
+        <li><strong>Utrata tożsamości kulturowej:</strong> Dominacja kultur globalnych może osłabić lokalne tradycje.</li>
+        <li><strong>Problemy ekologiczne:</strong> Wzrost produkcji i transportu zwiększa emisję CO2 i zanieczyszczenie środowiska.</li>
+        <li><strong>Bezrobocie:</strong> Przenoszenie produkcji do krajów o niższych kosztach pracy może powodować utratę miejsc pracy.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Секция: Выводы -->
+  <section id="wnioski" class="bg-white py-12">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-semibold mb-6 text-center">Wnioski</h2>
+      <p class="text-lg leading-relaxed">
+        Globalizacja to zjawisko o dwóch obliczach. Z jednej strony przynosi ogromne możliwości, takie jak rozwój gospodarczy czy wymiana kulturalna. Z drugiej strony niesie zagrożenia, w tym nierówności społeczne i problemy ekologiczne. Kluczowe jest znalezienie równowagi, aby maksymalizować korzyści i minimalizować negatywne skutki.
+      </p>
+    </div>
+  </section>
+
+  <!-- Секция: Квиз -->
+  <section id="quiz" class="py-12">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-semibold mb-6 text-center">Sprawdź swoją wiedzę!</h2>
+      <div id="quiz-container" class="space-y-8">
+        <!-- Вопрос 1 -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <p class="text-lg font-semibold mb-4">1. Co jest jednym z pozytywnych skutków globalizacji?</p>
+          <label class="block mb-2"><input type="radio" name="q1" value="a" class="mr-2"> a) Wzrost nierówności społecznych</label>
+          <label class="block mb-2"><input type="radio" name="q1" value="b" class="mr-2"> b) Rozwój gospodarczy</label>
+          <label class="block mb-2"><input type="radio" name="q1" value="c" class="mr-2"> c) Zanieczyszczenie środowiska</label>
+          <p id="result-q1" class="mt-4 hidden text-lg"></p>
+        </div>
+        <!-- Вопрос 2 -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <p class="text-lg font-semibold mb-4">2. Jakie zagrożenie niesie globalizacja?</p>
+          <label class="block mb-2"><input type="radio" name="q2" value="a" class="mr-2"> a) Wymiana kulturalna</label>
+          <label class="block mb-2"><input type="radio" name="q2" value="b" class="mr-2"> b) Utrata tożsamości kulturowej</label>
+          <label class="block mb-2"><input type="radio" name="q2" value="c" class="mr-2"> c) Rozwój technologii</label>
+          <p id="result-q2" class="mt-4 hidden text-lg"></p>
+        </div>
+        <!-- Вопрос 3 -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <p class="text-lg font-semibold mb-4">3. Dlaczego globalizacja może wpływać na środowisko?</p>
+          <label class="block mb-2"><input type="radio" name="q3" value="a" class="mr-2"> a) Zmniejsza emisję CO2</label>
+          <label class="block mb-2"><input type="radio" name="q3" value="b" class="mr-2"> b) Zwiększa produkcję i transport</label>
+          <label class="block mb-2"><input type="radio" name="q3" value="c" class="mr-2"> c) Promuje lokalne rynki</label>
+          <p id="result-q3" class="mt-4 hidden text-lg"></p>
+        </div>
+        <!-- Кнопка проверки -->
+        <button id="submit-quiz" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">Sprawdź odpowiedzi</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Футер -->
+  <footer class="bg-blue-600 text-white text-center py-4">
+    <p>© 2025 Projekt WOS. Wszelkie prawa zastrzeżone.</p>
+  </footer>
+
+  <!-- JavaScript для плавной прокрутки и квиза -->
+  <script>
+    // Плавная прокрутка
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
         });
+      });
+    });
+
+    // Логика квиза
+    document.getElementById('submit-quiz').addEventListener('click', function() {
+      const answers = {
+        q1: 'b', // Правильный ответ: b) Rozwój gospodarczy
+        q2: 'b', // Правильный ответ: b) Utrata tożsamości kulturowej
+        q3: 'b'  // Правильный ответ: b) Zwiększa produkcję i transport
+      };
+
+      for (let i = 1; i <= 3; i++) {
+        const question = `q${i}`;
+        const selected = document.querySelector(`input[name="${question}"]:checked`);
+        const resultElement = document.getElementById(`result-${question}`);
         
-        // Animacja pojawiania się sekcji przy scrollowaniu
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        function checkFade() {
-            const triggerBottom = window.innerHeight * 0.8;
-            
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                
-                if (elementTop < triggerBottom) {
-                    element.classList.add('active');
-                }
-            });
+        if (selected) {
+          resultElement.classList.remove('hidden');
+          if (selected.value === answers[question]) {
+            resultElement.textContent = 'Poprawna odpowiedź!';
+            resultElement.classList.remove('text-red-600');
+            resultElement.classList.add('text-green-600');
+          } else {
+            resultElement.textContent = 'Błędna odpowiedź. Spróbuj jeszcze raz!';
+            resultElement.classList.remove('text-green-600');
+            resultElement.classList.add('text-red-600');
+          }
+        } else {
+          resultElement.classList.remove('hidden');
+          resultElement.textContent = 'Wybierz odpowiedź!';
+          resultElement.classList.add('text-red-600');
         }
-        
-        window.addEventListener('scroll', checkFade);
-        window.addEventListener('load', checkFade);
-        
-        // Obsługa quizu
-        let score = 0;
-        
-        // Pytanie 1
-        document.querySelectorAll('#question1 .quiz-option').forEach(option => {
-            option.addEventListener('click', function() {
-                document.querySelectorAll('#question1 .quiz-option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-                this.classList.add('selected');
-            });
-        });
-        
-        document.getElementById('submit1').addEventListener('click', function() {
-            const selectedOption = document.querySelector('#question1 .quiz-option.selected');
-            if (selectedOption) {
-                const isCorrect = selectedOption.dataset.correct === 'true';
-                const feedback = document.getElementById('feedback1');
-                
-                document.querySelectorAll('#question1 .quiz-option').forEach(option => {
-                    option.classList.remove('correct', 'incorrect');
-                    if (option.dataset.correct === 'true') {
-                        option.classList.add('correct');
-                    } else if (option === selectedOption && !isCorrect) {
-                        option.classList.add('incorrect');
-                    }
-                });
-                
-                if (isCorrect) {
-                    feedback.innerHTML = 'Brawo! To poprawna odpowiedź. Globalizacja wiąże się raczej z osłabieniem roli państw na rzecz globalnych przepływów i instytucji międzynarodowych.';
-                    feedback.className = 'quiz-feedback correct';
-                    score++;
-                } else {
-                    feedback.innerHTML = 'Niestety, to nie jest poprawna odpowiedź. Globalizacja wiąże się raczej z osłabieniem roli państw na rzecz globalnych przepływów i instytucji międzynarodowych.';
-                    feedback.className = 'quiz-feedback incorrect';
-                }
-                
-                feedback.style.display = 'block';
-                this.style.display = 'none';
-                document.getElementById('next1').style.display = 'block';
-            } else {
-                alert('Proszę wybrać odpowiedź!');
-            }
-        });
-        
-        document.getElementById('next1').addEventListener('click', function() {
-            document.getElementById('question1').style.display = 'none';
-            document.getElementById('question2').style.display = 'block';
-        });
-        
-        // Pytanie 2
-        document.querySelectorAll('#question2 .quiz-option').forEach(option => {
-            option.addEventListener('click', function() {
-                document.querySelectorAll('#question2 .quiz-option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-                this.classList.add('selected');
-            });
-        });
-        
-        document.getElementById('submit2').addEventListener('click', function() {
-            const selectedOption = document.querySelector('#question2 .quiz-option.selected');
-            if (selectedOption) {
-                const isCorrect = selectedOption.dataset.correct === 'true';
-                const feedback = document.getElementById('feedback2');
-                
-                document.querySelectorAll('#question2 .quiz-option').forEach(option => {
-                    option.classList.remove('correct', 'incorrect');
-                    if (option.dataset.correct === 'true') {
-                        option.classList.add('correct');
-                    } else if (option === selectedOption && !isCorrect) {
-                        option.classList.add('incorrect');
-                    }
-                });
-                
-                if (isCorrect) {
-                    feedback.innerHTML = 'Doskonale! To poprawna odpowiedź. Globalizacja jest złożonym zjawiskiem, które różnie wpływa na poszczególne kraje i społeczeństwa.';
-                    feedback.className = 'quiz-feedback correct';
-                    score++;
-                } else {
-                    feedback.innerHTML = 'Niestety, to nie jest poprawna odpowiedź. Globalizacja jest złożonym zjawiskiem, które różnie wpływa na poszczególne kraje i społeczeństwa.';
-                    feedback.className = 'quiz-feedback incorrect';
-                }
-                
-                feedback.style.display = 'block';
-                this.style.display = 'none';
-                document.getElementById('next2').style.display = 'block';
-            } else {
-                alert('Proszę wybrać odpowiedź!');
-            }
-        });
-        
-       document.getElementById('next2').addEventListener('click', function() {
-                document.getElementById('question2').style.display = 'none';
-                document.getElementById('score').textContent = score;
-                
-                const resultMessage = document.getElementById('result-message');
-                if (score === 2) {
-                    resultMessage.textContent = 'Świetnie! Masz doskonałą wiedzę na temat globalizacji!';
-                } else if (score === 1) {
-                    resultMessage.textContent = 'Nieźle! Masz podstawową wiedzę na temat globalizacji, ale warto jeszcze pogłębić niektóre aspekty.';
-                } else {
-                    resultMessage.textContent = 'Warto jeszcze poszerzyć swoją wiedzę na temat globalizacji. Zachęcamy do ponownego przejrzenia materiału!';
-                }
-                
-                document.getElementById('quiz-result').style.display = 'block';
-            });
-            
-            document.getElementById('restart-quiz').addEventListener('click', function() {
-                score = 0;
-                
-                // Reset pytania 1
-                document.querySelectorAll('#question1 .quiz-option').forEach(option => {
-                    option.classList.remove('selected', 'correct', 'incorrect');
-                });
-                document.getElementById('feedback1').style.display = 'none';
-                document.getElementById('submit1').style.display = 'block';
-                document.getElementById('next1').style.display = 'none';
-                
-                // Reset pytania 2
-                document.querySelectorAll('#question2 .quiz-option').forEach(option => {
-                    option.classList.remove('selected', 'correct', 'incorrect');
-                });
-                document.getElementById('feedback2').style.display = 'none';
-                document.getElementById('submit2').style.display = 'block';
-                document.getElementById('next2').style.display = 'none';
-                
-                // Powrót do pierwszego pytania
-                document.getElementById('quiz-result').style.display = 'none';
-                document.getElementById('question1').style.display = 'block';
-            });
-            
-            // Dodatkowe animacje dla elementów
-            const animateCSS = (element, animation, prefix = 'animate__') =>
-                new Promise((resolve, reject) => {
-                    const animationName = `${prefix}${animation}`;
-                    const node = document.querySelector(element);
-                    
-                    node.classList.add(`${prefix}animated`, animationName);
-                    
-                    function handleAnimationEnd(event) {
-                        event.stopPropagation();
-                        node.classList.remove(`${prefix}animated`, animationName);
-                        resolve('Animation ended');
-                    }
-                    
-                    node.addEventListener('animationend', handleAnimationEnd, {once: true});
-                });
-                
-            // Animacje przy scrollu dla poszczególnych elementów
-            const elementsToAnimate = [
-                { selector: 'header h1', animation: 'fadeInDown', offset: 0 },
-                { selector: '.subtitle', animation: 'fadeInUp', offset: 300 },
-                { selector: '.advantages', animation: 'fadeInLeft', offset: 400 },
-                { selector: '.disadvantages', animation: 'fadeInRight', offset: 400 },
-                { selector: '.conclusion', animation: 'pulse', offset: 500 }
-            ];
-            
-            function checkAnimations() {
-                elementsToAnimate.forEach(item => {
-                    const element = document.querySelector(item.selector);
-                    if (!element) return;
-                    
-                    const position = element.getBoundingClientRect().top;
-                    const screenPosition = window.innerHeight - item.offset;
-                    
-                    if (position < screenPosition) {
-                        if (!element.classList.contains('animate__animated')) {
-                            element.classList.add('animate__animated', `animate__${item.animation}`);
-                        }
-                    }
-                });
-            }
-            
-            // Sprawdzanie animacji podczas scrollowania
-            window.addEventListener('scroll', checkAnimations);
-            window.addEventListener('load', checkAnimations);
-            
-            // Efekt pulsujący dla elementów z klasą .glow
-            const glowElements = document.querySelectorAll('.glow');
-            setInterval(() => {
-                glowElements.forEach(element => {
-                    element.classList.toggle('animate__pulse');
-                });
-            }, 3000);
-        });
-    </script>
+      }
+    });
+  </script>
 </body>
 </html>
