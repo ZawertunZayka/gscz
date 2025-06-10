@@ -1,703 +1,323 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Globalizacja: Szansa czy Zagrożenie?</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎰 NEON CASINO</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .header, .nav, .stats, .game, .bonuses, .upgrades {
+            margin: 20px 0;
+        }
+        .nav a {
+            color: #00ff88;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .stats div {
+            display: inline-block;
+            margin: 10px;
+            background: #333;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .slot-machine {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 50px;
+            margin: 20px 0;
+        }
+        .slot {
+            width: 100px;
+            height: 100px;
+            background: #222;
+            border: 2px solid #00ff88;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.5s;
+        }
+        .slot.spinning {
+            animation: spin 0.5s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        button {
+            background: #00ff88;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:disabled {
+            background: #555;
+            cursor: not-allowed;
+        }
+        .bonuses div, .upgrades div {
+            background: #333;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        #notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #00ff88;
+            color: #000;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
 </head>
-<body class="bg-gradient-to-br from-blue-50 to-indigo-100 font-sans">
-  <!-- Навигация -->
-  <nav class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-4 sticky top-0 shadow-lg z-50">
-    <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-xl font-bold flex items-center">
-        <i class="fas fa-globe mr-2"></i>Globalizacja
-      </h1>
-      <ul class="flex space-x-6">
-        <li><a href="#wstep" class="hover:text-blue-200 transition-colors duration-300">Wstęp</a></li>
-        <li><a href="#szanse" class="hover:text-blue-200 transition-colors duration-300">Szanse</a></li>
-        <li><a href="#zagrozenia" class="hover:text-blue-200 transition-colors duration-300">Zagrożenia</a></li>
-        <li><a href="#wnioski" class="hover:text-blue-200 transition-colors duration-300">Wnioski</a></li>
-        <li><a href="#quiz" class="hover:text-blue-200 transition-colors duration-300">Quiz</a></li>
-        <li><a href="#prezentacja" class="hover:text-blue-200 transition-colors duration-300">Prezentacja</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Главная секция -->
-  <header class="bg-gradient-to-r from-blue-800 to-indigo-900 text-white text-center py-20 relative overflow-hidden">
-    <div class="absolute inset-0 bg-black opacity-20"></div>
-    <div class="container mx-auto relative z-10">
-      <h1 class="text-5xl font-bold mb-6 animate-fade-in">Globalizacja: Szansa czy Zagrożenie?</h1>
-      <p class="text-xl opacity-90">Odkryj złożoność współczesnego świata</p>
-      <div class="mt-8">
-        <a href="#wstep" class="bg-white text-blue-800 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-lg">
-          Rozpocznij eksplorację <i class="fas fa-arrow-down ml-2"></i>
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Секция: Введение -->
-  <section id="wstep" class="py-16">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-4xl font-bold mb-8 text-center text-gray-800 flex items-center justify-center">
-          <i class="fas fa-question-circle mr-3 text-blue-600"></i>
-          Czym jest globalizacja?
-        </h2>
-        <div class="bg-white rounded-xl shadow-lg p-8 border-l-4 border-blue-500">
-          <p class="text-lg leading-relaxed text-gray-700">
-            Globalizacja to proces integracji gospodarczej, społecznej, kulturalnej i politycznej na świecie. Polega na zwiększaniu wzajemnych powiązań między krajami, dzięki rozwojowi technologii, komunikacji i handlu międzynarodowego.
-          </p>
-          <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="text-center p-4 bg-blue-50 rounded-lg">
-              <i class="fas fa-chart-line text-3xl text-blue-600 mb-2"></i>
-              <p class="font-semibold text-gray-800">Gospodarka</p>
-            </div>
-            <div class="text-center p-4 bg-green-50 rounded-lg">
-              <i class="fas fa-users text-3xl text-green-600 mb-2"></i>
-              <p class="font-semibold text-gray-800">Społeczeństwo</p>
-            </div>
-            <div class="text-center p-4 bg-purple-50 rounded-lg">
-              <i class="fas fa-palette text-3xl text-purple-600 mb-2"></i>
-              <p class="font-semibold text-gray-800">Kultura</p>
-            </div>
-          </div>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎰 NEON CASINO</h1>
+            <h2>💰 Баланс: <span id="balance">100</span> монет</h2>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Секция: Возможности -->
-  <section id="szanse" class="bg-white py-16">
-    <div class="container mx-auto px-4">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold mb-12 text-center text-gray-800 flex items-center justify-center">
-          <i class="fas fa-thumbs-up mr-3 text-green-600"></i>
-          Szanse globalizacji
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="bg-gradient-to-br from-green-50 to-emerald-100 p-6 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300">
-            <div class="flex items-start">
-              <i class="fas fa-chart-bar text-3xl text-green-600 mr-4 mt-1"></i>
-              <div>
-                <h3 class="text-xl font-bold mb-2 text-gray-800">Wzrost gospodarczy</h3>
-                <p class="text-gray-700">Globalizacja umożliwia krajom dostęp do nowych rynków, co sprzyja rozwojowi gospodarek.</p>
-              </div>
-            </div>
-          </div>
-          <div class="bg-gradient-to-br from-blue-50 to-cyan-100 p-6 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300">
-            <div class="flex items-start">
-              <i class="fas fa-exchange-alt text-3xl text-blue-600 mr-4 mt-1"></i>
-              <div>
-                <h3 class="text-xl font-bold mb-2 text-gray-800">Wymiana kulturalna</h3>
-                <p class="text-gray-700">Ludzie mają możliwość poznawania innych kultur, co wzbogaca społeczeństwa.</p>
-              </div>
-            </div>
-          </div>
-          <div class="bg-gradient-to-br from-purple-50 to-indigo-100 p-6 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300">
-            <div class="flex items-start">
-              <i class="fas fa-lightbulb text-3xl text-purple-600 mr-4 mt-1"></i>
-              <div>
-                <h3 class="text-xl font-bold mb-2 text-gray-800">Innowacje technologiczne</h3>
-                <p class="text-gray-700">Współpraca międzynarodowa przyspiesza rozwój nowych technologii.</p>
-              </div>
-            </div>
-          </div>
-          <div class="bg-gradient-to-br from-orange-50 to-amber-100 p-6 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300">
-            <div class="flex items-start">
-              <i class="fas fa-shopping-cart text-3xl text-orange-600 mr-4 mt-1"></i>
-              <div>
-                <h3 class="text-xl font-bold mb-2 text-gray-800">Dostęp do towarów</h3>
-                <p class="text-gray-700">Konsumenci mogą korzystać z produktów i usług z całego świata.</p>
-              </div>
-            </div>
-          </div>
+        <div class="nav">
+            <a href="#game">🎰 Игра</a>
+            <a href="#shop">🛒 Магазин</a>
+            <a href="#upgrades">⚡ Улучшения</a>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Секция: Угрозы -->
-  <section id="zagrozenia" class="py-16">
-    <div class="container mx-auto px-4">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold mb-12 text-center text-gray-800 flex items-center justify-center">
-          <i class="fas fa-exclamation-triangle mr-3 text-red-600"></i>
-          Zagrożenia globalizacji
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="bg-gradient-to-br from-red-50 to-pink-100 p-6 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300">
-            <div class="flex items-start">
-              <i class="fas fa-balance-scale text-3xl text-red-600 mr-4 mt-1"></i>
-              <div>
-                <h3 class="text-xl font-bold mb-2 text-gray-800">Nierówności społeczne</h3>
-                <p class="text-gray-700">Globalizacja może pogłębiać różnice między bogatymi a biednymi krajami.</p>
-              </div>
-            </div>
-          </div>
-          <div class="bg-gradient-to-br from-yellow-50 to-orange-100 p-6 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300">
-            <div class="flex items-start">
-              <i class="fas fa-mask text-3xl text-yellow-600 mr-4 mt-1"></i>
-              <div>
-                <h3 class="text-xl font-bold mb-2 text-gray-800">Utrata tożsamości kulturowej</h3>
-                <p class="text-gray-700">Dominacja kultur globalnych może osłabić lokalne tradycje.</p>
-              </div>
-            </div>
-          </div>
-          <div class="bg-gradient-to-br from-green-50 to-teal-100 p-6 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300">
-            <div class="flex items-start">
-              <i class="fas fa-leaf text-3xl text-green-600 mr-4 mt-1"></i>
-              <div>
-                <h3 class="text-xl font-bold mb-2 text-gray-800">Problemy ekologiczne</h3>
-                <p class="text-gray-700">Wzrost produkcji i transportu zwiększa emisję CO2 i zanieczyszczenie środowiska.</p>
-              </div>
-            </div>
-          </div>
-          <div class="bg-gradient-to-br from-gray-50 to-slate-100 p-6 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300">
-            <div class="flex items-start">
-              <i class="fas fa-user-times text-3xl text-gray-600 mr-4 mt-1"></i>
-              <div>
-                <h3 class="text-xl font-bold mb-2 text-gray-800">Bezrobocie</h3>
-                <p class="text-gray-700">Przenoszenie produkcji do krajów o niższych kosztach pracy może powodować utratę miejsc pracy.</p>
-              </div>
-            </div>
-          </div>
+        <div class="stats">
+            <div>🎮 Игр сыграно: <span id="gamesPlayed">0</span></div>
+            <div>🏆 Всего выиграно: <span id="totalWon">0</span></div>
+            <div>📈 Процент побед: <span id="winRate">0%</span></div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Секция: Выводы -->
-  <section id="wnioski" class="bg-white py-16">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-4xl font-bold mb-8 text-center text-gray-800 flex items-center justify-center">
-          <i class="fas fa-clipboard-check mr-3 text-indigo-600"></i>
-          Wnioski
-        </h2>
-        <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl shadow-lg p-8 border-l-4 border-indigo-500">
-          <p class="text-lg leading-relaxed text-gray-700 mb-6">
-            Globalizacja to zjawisko o dwóch obliczach. Z jednej strony przynosi ogromne możliwości, takie jak rozwój gospodarczy czy wymiana kulturalna. Z drugiej strony niesie zagrożenia, w tym nierówności społeczne i problemy ekologiczne.
-          </p>
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-bold mb-4 text-indigo-800 flex items-center">
-              <i class="fas fa-key mr-2"></i>Kluczowy wniosek
-            </h3>
-            <p class="text-gray-700">
-              Kluczowe jest znalezienie równowagi, aby maksymalizować korzyści i minimalizować negatywne skutki globalizacji dla przyszłych pokoleń.
-            </p>
-          </div>
+        <div class="game" id="game">
+            <div class="slot-machine">
+                <div class="slot" id="slot1">🎰</div>
+                <div class="slot" id="slot2">🎰</div>
+                <div class="slot" id="slot3">🎰</div>
+            </div>
+            <button id="playButton">ИГРАТЬ (10 монет)</button>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Секция: Квиз -->
-  <section id="quiz" class="py-16">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-4xl font-bold mb-12 text-center text-gray-800 flex items-center justify-center">
-          <i class="fas fa-brain mr-3 text-purple-600"></i>
-          Sprawdź swoją wiedzę!
-        </h2>
-        <div id="quiz-container" class="space-y-6">
-          <!-- Вопрос 1 -->
-          <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-500 transform hover:scale-102 transition-all duration-300">
-            <p class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
-              <span class="bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">1</span>
-              Co jest jednym z pozytywnych skutków globalizacji?
-            </p>
-            <div class="space-y-2">
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q1" value="a" class="mr-3 text-blue-600"> 
-                <span>a) Wzrost nierówności społecznych</span>
-              </label>
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q1" value="b" class="mr-3 text-blue-600"> 
-                <span>b) Rozwój gospodarczy</span>
-              </label>
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q1" value="c" class="mr-3 text-blue-600"> 
-                <span>c) Zanieczyszczenie środowiska</span>
-              </label>
+        <div class="bonuses" id="shop">
+            <div>
+                <h3>💎 Стартовый бонус</h3>
+                <p>Получите 500 монет для успешного старта!</p>
+                <button id="starterBonus">ПОЛУЧИТЬ БЕСПЛАТНО</button>
             </div>
-            <p id="result-q1" class="mt-4 hidden text-lg font-semibold"></p>
-          </div>
-
-          <!-- Вопрос 2 -->
-          <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500 transform hover:scale-102 transition-all duration-300">
-            <p class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
-              <span class="bg-green-500 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">2</span>
-              Jakie zagrożenie niesie globalizacja?
-            </p>
-            <div class="space-y-2">
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q2" value="a" class="mr-3 text-green-600"> 
-                <span>a) Wymiana kulturalna</span>
-              </label>
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q2" value="b" class="mr-3 text-green-600"> 
-                <span>b) Utrata tożsamości kulturowej</span>
-              </label>
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q2" value="c" class="mr-3 text-green-600"> 
-                <span>c) Rozwój technologii</span>
-              </label>
+            <div>
+                <h3>🎁 Ежедневный бонус</h3>
+                <p>Получайте 100 монет каждые 24 часа</p>
+                <button id="dailyBonus">ПОЛУЧИТЬ</button>
             </div>
-            <p id="result-q2" class="mt-4 hidden text-lg font-semibold"></p>
-          </div>
-
-          <!-- Вопрос 3 -->
-          <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-500 transform hover:scale-102 transition-all duration-300">
-            <p class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
-              <span class="bg-purple-500 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">3</span>
-              Dlaczego globalizacja może wpływać na środowisko?
-            </p>
-            <div class="space-y-2">
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q3" value="a" class="mr-3 text-purple-600"> 
-                <span>a) Zmniejsza emisję CO2</span>
-              </label>
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q3" value="b" class="mr-3 text-purple-600"> 
-                <span>b) Zwiększa produkcję i transport</span>
-              </label>
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q3" value="c" class="mr-3 text-purple-600"> 
-                <span>c) Promuje lokalne rynki</span>
-              </label>
-            </div>
-            <p id="result-q3" class="mt-4 hidden text-lg font-semibold"></p>
-          </div>
-
-          <!-- Вопрос 4 -->
-          <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 transform hover:scale-102 transition-all duration-300">
-            <p class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
-              <span class="bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">4</span>
-              Które z poniższych jest przykładem globalizacji kulturowej?
-            </p>
-            <div class="space-y-2">
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q4" value="a" class="mr-3 text-red-600"> 
-                <span>a) Popularność McDonald's na całym świecie</span>
-              </label>
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q4" value="b" class="mr-3 text-red-600"> 
-                <span>b) Lokalne targi w małym mieście</span>
-              </label>
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q4" value="c" class="mr-3 text-red-600"> 
-                <span>c) Tradycyjne rzemiosło regionalne</span>
-              </label>
-            </div>
-            <p id="result-q4" class="mt-4 hidden text-lg font-semibold"></p>
-          </div>
-
-          <!-- Вопрос 5 -->
-          <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500 transform hover:scale-102 transition-all duration-300">
-            <p class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
-              <span class="bg-yellow-500 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">5</span>
-              Co może być skutkiem globalizacji w dziedzinie zatrudnienia?
-            </p>
-            <div class="space-y-2">
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q5" value="a" class="mr-3 text-yellow-600"> 
-                <span>a) Wzrost zatrudnienia we wszystkich krajach</span>
-              </label>
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q5" value="b" class="mr-3 text-yellow-600"> 
-                <span>b) Przenoszenie miejsc pracy do krajów o niższych kosztach</span>
-              </label>
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q5" value="c" class="mr-3 text-yellow-600"> 
-                <span>c) Eliminacja międzynarodowego handlu</span>
-              </label>
-            </div>
-            <p id="result-q5" class="mt-4 hidden text-lg font-semibold"></p>
-          </div>
-
-          <!-- Вопрос 6 -->
-          <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-indigo-500 transform hover:scale-102 transition-all duration-300">
-            <p class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
-              <span class="bg-indigo-500 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">6</span>
-              Które technologie najbardziej przyczyniły się do globalizacji?
-            </p>
-            <div class="space-y-2">
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q6" value="a" class="mr-3 text-indigo-600"> 
-                <span>a) Internet i transport</span>
-              </label>
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q6" value="b" class="mr-3 text-indigo-600"> 
-                <span>b) Maszyny parowe</span>
-              </label>
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q6" value="c" class="mr-3 text-indigo-600"> 
-                <span>c) Tradycyjne narzędzia rolnicze</span>
-              </label>
-            </div>
-            <p id="result-q6" class="mt-4 hidden text-lg font-semibold"></p>
-          </div>
-
-          <!-- Вопрос 7 -->
-          <!-- Вопрос 7 -->
-          <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-pink-500 transform hover:scale-102 transition-all duration-300">
-            <p class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
-              <span class="bg-pink-500 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">7</span>
-              Jakie organizacje międzynarodowe wspierają globalizację?
-            </p>
-            <div class="space-y-2">
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q7" value="a" class="mr-3 text-pink-600"> 
-                <span>a) WTO (Światowa Organizacja Handlu)</span>
-              </label>
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q7" value="b" class="mr-3 text-pink-600"> 
-                <span>b) Lokalne stowarzyszenia kulturalne</span>
-              </label>
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q7" value="c" class="mr-3 text-pink-600"> 
-                <span>c) Regionalne muzea</span>
-              </label>
-            </div>
-            <p id="result-q7" class="mt-4 hidden text-lg font-semibold"></p>
-          </div>
-
-          <!-- Вопрос 8 -->
-          <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-500 transform hover:scale-102 transition-all duration-300">
-            <p class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
-              <span class="bg-teal-500 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">8</span>
-              Która z poniższych opcji może pomóc w zmniejszeniu negatywnych skutków globalizacji?
-            </p>
-            <div class="space-y-2">
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q8" value="a" class="mr-3 text-teal-600"> 
-                <span>a) Całkowite zatrzymanie handlu międzynarodowego</span>
-              </label>
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q8" value="b" class="mr-3 text-teal-600"> 
-                <span>b) Zrównoważony rozwój i fair trade</span>
-              </label>
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q8" value="c" class="mr-3 text-teal-600"> 
-                <span>c) Ignorowanie problemów środowiskowych</span>
-              </label>
-            </div>
-            <p id="result-q8" class="mt-4 hidden text-lg font-semibold"></p>
-          </div>
-
-          <!-- Вопрос 9 -->
-          <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-orange-500 transform hover:scale-102 transition-all duration-300">
-            <p class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
-              <span class="bg-orange-500 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">9</span>
-              Która z poniższych definicji najlepiej opisuje outsourcing?
-            </p>
-            <div class="space-y-2">
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q9" value="a" class="mr-3 text-orange-600"> 
-                <span>a) Produkcja wyłącznie na rynku lokalnym</span>
-              </label>
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q9" value="b" class="mr-3 text-orange-600"> 
-                <span>b) Przenoszenie części działalności do innych krajów</span>
-              </label>
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q9" value="c" class="mr-3 text-orange-600"> 
-                <span>c) Zamykanie fabryk</span>
-              </label>
-            </div>
-            <p id="result-q9" class="mt-4 hidden text-lg font-semibold"></p>
-          </div>
-          <!-- Вопрос 10 -->
-          <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-cyan-500 transform hover:scale-102 transition-all duration-300">
-            <p class="text-lg font-semibold mb-4 text-gray-800 flex items-center">
-              <span class="bg-cyan-500 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">10</span>
-              Jak globalizacja wpływa na małe lokalne przedsiębiorstwa?
-            </p>
-            <div class="space-y-2">
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q10" value="a" class="mr-3 text-cyan-600"> 
-                <span>a) Zawsze poprawia ich sytuację</span>
-              </label>
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q10" value="b" class="mr-3 text-cyan-600"> 
-                <span>b) Może stwarzać zarówno możliwości, jak i wyzwania</span>
-              </label>
-              <label class="flex items-center p-2 rounded hover:bg-gray-50 cursor-pointer">
-                <input type="radio" name="q10" value="c" class="mr-3 text-cyan-600"> 
-                <span>c) Zawsze prowadzi do ich zamknięcia</span>
-              </label>
-            </div>
-            <p id="result-q10" class="mt-4 hidden text-lg font-semibold"></p>
-          </div>
-
-          <!-- Кнопки -->
-          <div class="text-center space-y-4 pt-8">
-            <button id="submit-quiz" class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-8 py-4 rounded-lg hover:from-blue-700 hover:to-indigo-800 transform hover:scale-105 transition-all duration-300 shadow-lg font-semibold">
-              <i class="fas fa-check-circle mr-2"></i>
-              Sprawdź odpowiedzi
-            </button>
-            <div id="quiz-score" class="hidden">
-              <div class="bg-white p-6 rounded-xl shadow-lg border-2 border-blue-500 mt-6">
-                <h3 class="text-2xl font-bold text-center mb-4 text-gray-800">
-                  <i class="fas fa-trophy text-yellow-500 mr-2"></i>
-                  Twój wynik
-                </h3>
-                <div id="score-display" class="text-center">
-                  <div class="text-4xl font-bold text-blue-600 mb-2" id="score-number">0/10</div>
-                  <div class="text-lg text-gray-600" id="score-percentage">0%</div>
-                  <div class="mt-4 p-4 rounded-lg" id="score-message">
-                    <p class="font-semibold"></p>
-                  </div>
-                </div>
-                <button id="reset-quiz" class="mt-4 bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-300">
-                  <i class="fas fa-redo mr-2"></i>
-                  Spróbuj ponownie
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Секция: Презентация -->
-  <section id="prezentacja" class="bg-white py-16">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl font-bold mb-8 text-gray-800 flex items-center justify-center">
-          <i class="fas fa-presentation mr-3 text-blue-600"></i>
-          Prezentacja
-        </h2>
-        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl shadow-lg">
-          <div class="mb-6">
-            <i class="fas fa-file-powerpoint text-6xl text-blue-600 mb-4"></i>
-            <h3 class="text-2xl font-semibold text-gray-800 mb-4">Pełna prezentacja o globalizacji</h3>
-            <p class="text-gray-600 mb-6">
-              Odkryj szczegółową prezentację zawierającą dodatkowe informacje, przykłady i case studies dotyczące globalizacji.
-            </p>
-          </div>
-          <a href="https://1drv.ms/p/c/b85ec8f72dc3d72a/EXELNLVXL7NLlV-g8b4GVnkBlt-OmjjxrPSz9dXSGnFGUQ?e=NgaWtE" 
-             class="inline-flex items-center bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-8 py-4 rounded-lg hover:from-blue-700 hover:to-indigo-800 transform hover:scale-105 transition-all duration-300 shadow-lg font-semibold">
-            <i class="fas fa-external-link-alt mr-2"></i>
-            Otwórz prezentację
-          </a>
+        <div class="upgrades" id="upgrades">
+            <div>
+                <h3>🍀 Удача</h3>
+                <p>Уровень: <span id="luckLevel">1</span>/10</p>
+                <p>Увеличивает шанс выигрыша на 5% за уровень</p>
+                <button id="upgradeLuck">УЛУЧШИТЬ (100 монет)</button>
+            </div>
+            <div>
+                <h3>💰 Жадность</h3>
+                <p>Уровень: <span id="greedLevel">1</span>/10</p>
+                <p>Увеличивает выигрыш на 10% за уровень</p>
+                <button id="upgradeGreed">УЛУЧШИТЬ (150 монет)</button>
+            </div>
+            <div>
+                <h3>⚡ Скорость</h3>
+                <p>Уровень: <span id="speedLevel">1</span>/5</p>
+                <p>Уменьшает время анимации на 20% за уровень</p>
+                <button id="upgradeSpeed">УЛУЧШИТЬ (200 монет)</button>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Футер -->
-  <footer class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-8">
-    <div class="container mx-auto px-4">
-      <div class="text-center">
-        <div class="flex justify-center space-x-6 mb-4">
-          <i class="fab fa-facebook text-2xl hover:text-blue-300 cursor-pointer transition-colors duration-300"></i>
-          <i class="fab fa-twitter text-2xl hover:text-blue-300 cursor-pointer transition-colors duration-300"></i>
-          <i class="fab fa-linkedin text-2xl hover:text-blue-300 cursor-pointer transition-colors duration-300"></i>
-          <i class="fas fa-envelope text-2xl hover:text-blue-300 cursor-pointer transition-colors duration-300"></i>
-        </div>
-        <p class="mb-2">© 2025 Projekt WOS. Wszelkie prawa zastrzeżone.</p>
-        <p class="text-blue-200 text-sm">Stworzone z pasją do edukacji o globalizacji</p>
-      </div>
+        <div id="notification"></div>
     </div>
-  </footer>
 
-  <!-- JavaScript -->
-  <script>
-    // Плавная прокрутка
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
+    <script>
+        // Инициализация состояния
+        let state = JSON.parse(localStorage.getItem('casinoState')) || {
+            balance: 100,
+            gamesPlayed: 0,
+            totalWon: 0,
+            wins: 0,
+            luckLevel: 1,
+            greedLevel: 1,
+            speedLevel: 1,
+            lastDailyBonus: 0,
+            starterBonusTaken: false
+        };
+
+        // Элементы DOM
+        const balanceEl = document.getElementById('balance');
+        const gamesPlayedEl = document.getElementById('gamesPlayed');
+        const totalWonEl = document.getElementById('totalWon');
+        const winRateEl = document.getElementById('winRate');
+        const slots = [document.getElementById('slot1'), document.getElementById('slot2'), document.getElementById('slot3')];
+        const playButton = document.getElementById('playButton');
+        const starterBonusButton = document.getElementById('starterBonus');
+        const dailyBonusButton = document.getElementById('dailyBonus');
+        const upgradeLuckButton = document.getElementById('upgradeLuck');
+        const upgradeGreedButton = document.getElementById('upgradeGreed');
+        const upgradeSpeedButton = document.getElementById('upgradeSpeed');
+        const luckLevelEl = document.getElementById('luckLevel');
+        const greedLevelEl = document.getElementById('greedLevel');
+        const speedLevelEl = document.getElementById('speedLevel');
+        const notificationEl = document.getElementById('notification');
+
+        // Обновление интерфейса
+        function updateUI() {
+            balanceEl.textContent = state.balance;
+            gamesPlayedEl.textContent = state.gamesPlayed;
+            totalWonEl.textContent = state.totalWon;
+            winRateEl.textContent = state.gamesPlayed ? ((state.wins / state.gamesPlayed) * 100).toFixed(1) + '%' : '0%';
+            luckLevelEl.textContent = state.luckLevel;
+            greedLevelEl.textContent = state.greedLevel;
+            speedLevelEl.textContent = state.speedLevel;
+            playButton.disabled = state.balance < 10;
+            starterBonusButton.disabled = state.starterBonusTaken;
+            dailyBonusButton.disabled = Date.now() - state.lastDailyBonus < 24 * 60 * 60 * 1000;
+            upgradeLuckButton.disabled = state.balance < 100 || state.luckLevel >= 10;
+            upgradeGreedButton.disabled = state.balance < 150 || state.greedLevel >= 10;
+            upgradeSpeedButton.disabled = state.balance < 200 || state.speedLevel >= 5;
+            localStorage.setItem('casinoState', JSON.stringify(state));
         }
-      });
-    });
 
-    // Логика квиза
-    document.getElementById('submit-quiz').addEventListener('click', function() {
-      const answers = {
-        q1: 'b', // Rozwój gospodarczy
-        q2: 'b', // Utrata tożsamości kulturowej
-        q3: 'b', // Zwiększa produkcję i transport
-        q4: 'a', // Popularność McDonald's na całym świecie
-        q5: 'b', // Przenoszenie miejsc pracy do krajów o niższych kosztach
-        q6: 'a', // Internet i transport
-        q7: 'a', // WTO (Światowa Organizacja Handlu)
-        q8: 'b', // Zrównoważony rozwój i fair trade
-        q9: 'b', // Przenoszenie części działalności do innych krajów
-        q10: 'b' // Może stwarzać zarówno możliwości, jak i wyzwania
-      };
-
-      let correctAnswers = 0;
-      const totalQuestions = Object.keys(answers).length;
-
-      for (let i = 1; i <= totalQuestions; i++) {
-        const question = `q${i}`;
-        const selected = document.querySelector(`input[name="${question}"]:checked`);
-        const resultElement = document.getElementById(`result-${question}`);
-        
-        if (selected) {
-          resultElement.classList.remove('hidden');
-          if (selected.value === answers[question]) {
-            correctAnswers++;
-            resultElement.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Poprawna odpowiedź!';
-            resultElement.classList.remove('text-red-600');
-            resultElement.classList.add('text-green-600');
-          } else {
-            resultElement.innerHTML = '<i class="fas fa-times-circle mr-2"></i>Błędna odpowiedź. Spróbuj jeszcze raz!';
-            resultElement.classList.remove('text-green-600');
-            resultElement.classList.add('text-red-600');
-          }
-        } else {
-          resultElement.classList.remove('hidden');
-          resultElement.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i>Wybierz odpowiedź!';
-          resultElement.classList.add('text-yellow-600');
+        // Уведомления
+        function showNotification(message) {
+            notificationEl.textContent = message;
+            notificationEl.style.display = 'block';
+            setTimeout(() => notificationEl.style.display = 'none', 2000);
         }
-      }
 
-      // Показать результат
-      const scoreDisplay = document.getElementById('quiz-score');
-      const scoreNumber = document.getElementById('score-number');
-      const scorePercentage = document.getElementById('score-percentage');
-      const scoreMessage = document.getElementById('score-message');
-      
-      scoreDisplay.classList.remove('hidden');
-      scoreNumber.textContent = `${correctAnswers}/${totalQuestions}`;
-      
-      const percentage = Math.round((correctAnswers / totalQuestions) * 100);
-      scorePercentage.textContent = `${percentage}%`;
-      
-      // Сообщение в зависимости от результата
-      const messageElement = scoreMessage.querySelector('p');
-      if (percentage >= 90) {
-        scoreMessage.className = 'mt-4 p-4 rounded-lg bg-green-100 border border-green-300';
-        messageElement.textContent = 'Doskonały wynik! Jesteś ekspertem od globalizacji! 🏆';
-        messageElement.className = 'font-semibold text-green-800';
-      } else if (percentage >= 70) {
-        scoreMessage.className = 'mt-4 p-4 rounded-lg bg-blue-100 border border-blue-300';
-        messageElement.textContent = 'Bardzo dobry wynik! Masz solidną wiedzę o globalizacji! 👏';
-        messageElement.className = 'font-semibold text-blue-800';
-      } else if (percentage >= 50) {
-        scoreMessage.className = 'mt-4 p-4 rounded-lg bg-yellow-100 border border-yellow-300';
-        messageElement.textContent = 'Dobry wynik! Warto jeszcze pogłębić wiedzę. 📚';
-        messageElement.className = 'font-semibold text-yellow-800';
-      } else {
-        scoreMessage.className = 'mt-4 p-4 rounded-lg bg-red-100 border border-red-300';
-        messageElement.textContent = 'Potrzebujesz więcej nauki. Przeczytaj materiał jeszcze raz! 💪';
-        messageElement.className = 'font-semibold text-red-800';
-      }
+        // Механика рулетки
+        function playGame() {
+            if (state.balance < 10) {
+                showNotification('Недостаточно монет!');
+                return;
+            }
+            state.balance -= 10;
+            state.gamesPlayed++;
+            playButton.disabled = true;
+            slots.forEach(slot => slot.classList.add('spinning'));
 
-      // Прокрутка к результату
-      scoreDisplay.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
+            // Время анимации (в миллисекундах)
+            const baseAnimationTime = 1000;
+            const speedMultiplier = 1 - (state.speedLevel - 1) * 0.2;
+            const animationTime = baseAnimationTime * speedMultiplier;
 
-    // Кнопка сброса квиза
-    document.getElementById('reset-quiz').addEventListener('click', function() {
-      // Сброс всех радио-кнопок
-      for (let i = 1; i <= 10; i++) {
-        const radios = document.querySelectorAll(`input[name="q${i}"]`);
-        radios.forEach(radio => radio.checked = false);
-        
-        const resultElement = document.getElementById(`result-q${i}`);
-        resultElement.classList.add('hidden');
-        resultElement.className = 'mt-4 hidden text-lg font-semibold';
-      }
-      
-      // Скрыть результат
-      document.getElementById('quiz-score').classList.add('hidden');
-      
-      // Прокрутка к началу квиза
-      document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
-    });
+            // Вероятности с учетом удачи
+            const luckBonus = state.luckLevel * 5;
+            const outcomes = [
+                { value: 10, weight: 40 + luckBonus },
+                { value: 20, weight: 30 + luckBonus / 2 },
+                { value: -20, weight: 20 - luckBonus / 2 },
+                { value: -50, weight: 10 - luckBonus / 4 }
+            ];
+            const totalWeight = outcomes.reduce((sum, outcome) => sum + outcome.weight, 0);
+            let random = Math.random() * totalWeight;
+            let result;
+            for (const outcome of outcomes) {
+                random -= outcome.weight;
+                if (random <= 0) {
+                    result = outcome.value;
+                    break;
+                }
+            }
 
-    // Анимация при прокрутке
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
+            // Применение жадности
+            const greedMultiplier = 1 + (state.greedLevel - 1) * 0.1;
+            const finalResult = Math.round(result * greedMultiplier);
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
+            setTimeout(() => {
+                slots.forEach(slot => {
+                    slot.classList.remove('spinning');
+                    slot.textContent = finalResult > 0 ? `+${finalResult}` : finalResult;
+                });
+                state.balance += finalResult;
+                if (finalResult > 0) {
+                    state.totalWon += finalResult;
+                    state.wins++;
+                    showNotification(`Вы выиграли ${finalResult} монет!`);
+                } else {
+                    showNotification(`Вы потеряли ${-finalResult} монет!`);
+                }
+                updateUI();
+                playButton.disabled = false;
+            }, animationTime);
         }
-      });
-    }, observerOptions);
 
-    // Применить анимацию к элементам
-    document.querySelectorAll('section').forEach(section => {
-      section.style.opacity = '0';
-      section.style.transform = 'translateY(30px)';
-      section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-      observer.observe(section);
-    });
+        // Бонусы
+        starterBonusButton.addEventListener('click', () => {
+            if (!state.starterBonusTaken) {
+                state.balance += 500;
+                state.starterBonusTaken = true;
+                showNotification('Получено 500 монет!');
+                updateUI();
+            }
+        });
 
-    // Инициализация первой секции
-    document.querySelector('header').style.opacity = '1';
-    document.querySelector('header').style.transform = 'translateY(0)';
-  </script>
+        dailyBonusButton.addEventListener('click', () => {
+            if (Date.now() - state.lastDailyBonus >= 24 * 60 * 60 * 1000) {
+                state.balance += 100;
+                state.lastDailyBonus = Date.now();
+                showNotification('Получено 100 монет!');
+                updateUI();
+            }
+        });
 
-  <style>
-    @keyframes fade-in {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        // Улучшения
+        upgradeLuckButton.addEventListener('click', () => {
+            if (state.balance >= 100 && state.luckLevel < 10) {
+                state.balance -= 100;
+                state.luckLevel++;
+                showNotification('Удача улучшена!');
+                updateUI();
+            }
+        });
 
-    .animate-fade-in {
-      animation: fade-in 1s ease-out;
-    }
+        upgradeGreedButton.addEventListener('click', () => {
+            if (state.balance >= 150 && state.greedLevel < 10) {
+                state.balance -= 150;
+                state.greedLevel++;
+                showNotification('Жадность улучшена!');
+                updateUI();
+            }
+        });
 
-    .hover\:scale-102:hover {
-      transform: scale(1.02);
-    }
+        upgradeSpeedButton.addEventListener('click', () => {
+            if (state.balance >= 200 && state.speedLevel < 5) {
+                state.balance -= 200;
+                state.speedLevel++;
+                showNotification('Скорость улучшена!');
+                updateUI();
+            }
+        });
 
-    .hover\:scale-105:hover {
-      transform: scale(1.05);
-    }
+        playButton.addEventListener('click', playGame);
 
-    /* Плавные переходы для радио-кнопок */
-    input[type="radio"] {
-      transition: all 0.2s ease;
-    }
-
-    input[type="radio"]:checked {
-      transform: scale(1.1);
-    }
-
-    /* Стилизация полосы прокрутки */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #f1f1f1;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(to bottom, #3b82f6, #6366f1);
-      border-radius: 4px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(to bottom, #2563eb, #4f46e5);
-    }
-  </style>
+        // Инициализация
+        updateUI();
+    </script>
 </body>
 </html>
