@@ -3,321 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎰 NEON CASINO</title>
+    <title>Документ OneDrive</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #1a1a1a;
-            color: #fff;
-            text-align: center;
+        * {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .header, .nav, .stats, .game, .bonuses, .upgrades {
-            margin: 20px 0;
-        }
-        .nav a {
-            color: #00ff88;
-            margin: 0 15px;
-            text-decoration: none;
-        }
-        .stats div {
-            display: inline-block;
-            margin: 10px;
-            background: #333;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .slot-machine {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            font-size: 50px;
-            margin: 20px 0;
-        }
-        .slot {
-            width: 100px;
-            height: 100px;
-            background: #222;
-            border: 2px solid #00ff88;
-            border-radius: 10px;
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.5s;
+            padding: 20px;
         }
-        .slot.spinning {
-            animation: spin 0.5s linear infinite;
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+
+        .container:hover {
+            transform: translateY(-5px);
         }
-        button {
-            background: #00ff88;
-            color: #000;
-            border: none;
-            padding: 10px 20px;
-            margin: 10px;
-            border-radius: 5px;
-            cursor: pointer;
+
+        .icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            background: linear-gradient(45deg, #0078d4, #106ebe);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 120, 212, 0.3);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .description {
+            color: #666;
+            margin-bottom: 30px;
             font-size: 16px;
+            line-height: 1.6;
         }
-        button:disabled {
-            background: #555;
-            cursor: not-allowed;
+
+        .link-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #0078d4, #106ebe);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 120, 212, 0.3);
+            border: none;
+            cursor: pointer;
         }
-        .bonuses div, .upgrades div {
-            background: #333;
-            padding: 15px;
-            margin: 10px;
-            border-radius: 5px;
+
+        .link-button:hover {
+            background: linear-gradient(45deg, #106ebe, #005a9e);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 120, 212, 0.4);
         }
-        #notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #00ff88;
-            color: #000;
-            padding: 10px;
-            border-radius: 5px;
-            display: none;
+
+        .link-button:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #999;
+            font-size: 14px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .link-button {
+                padding: 12px 25px;
+                font-size: 15px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>🎰 NEON CASINO</h1>
-            <h2>💰 Баланс: <span id="balance">100</span> монет</h2>
+        <div class="icon pulse">
+            📄
         </div>
-
-        <div class="nav">
-            <a href="#game">🎰 Игра</a>
-            <a href="#shop">🛒 Магазин</a>
-            <a href="#upgrades">⚡ Улучшения</a>
+        <h1>Документ OneDrive</h1>
+        <p class="description">
+            Нажмите на кнопку ниже, чтобы открыть документ в Microsoft OneDrive. 
+            Документ откроется в новой вкладке браузера.
+        </p>
+        
+        <a href="https://1drv.ms/w/c/b85ec8f72dc3d72a/EUi3WEvd7uhHoReBwMk-7JABe_OeY9_9bVVr-FOSakXiZg?e=eMEetb" 
+           class="link-button" 
+           target="_blank" 
+           rel="noopener noreferrer">
+            Открыть документ
+        </a>
+        
+        <div class="footer">
+            Документ Microsoft Word в OneDrive
         </div>
-
-        <div class="stats">
-            <div>🎮 Игр сыграно: <span id="gamesPlayed">0</span></div>
-            <div>🏆 Всего выиграно: <span id="totalWon">0</span></div>
-            <div>📈 Процент побед: <span id="winRate">0%</span></div>
-        </div>
-
-        <div class="game" id="game">
-            <div class="slot-machine">
-                <div class="slot" id="slot1">🎰</div>
-                <div class="slot" id="slot2">🎰</div>
-                <div class="slot" id="slot3">🎰</div>
-            </div>
-            <button id="playButton">ИГРАТЬ (10 монет)</button>
-        </div>
-
-        <div class="bonuses" id="shop">
-            <div>
-                <h3>💎 Стартовый бонус</h3>
-                <p>Получите 500 монет для успешного старта!</p>
-                <button id="starterBonus">ПОЛУЧИТЬ БЕСПЛАТНО</button>
-            </div>
-            <div>
-                <h3>🎁 Ежедневный бонус</h3>
-                <p>Получайте 100 монет каждые 24 часа</p>
-                <button id="dailyBonus">ПОЛУЧИТЬ</button>
-            </div>
-        </div>
-
-        <div class="upgrades" id="upgrades">
-            <div>
-                <h3>🍀 Удача</h3>
-                <p>Уровень: <span id="luckLevel">1</span>/10</p>
-                <p>Увеличивает шанс выигрыша на 5% за уровень</p>
-                <button id="upgradeLuck">УЛУЧШИТЬ (100 монет)</button>
-            </div>
-            <div>
-                <h3>💰 Жадность</h3>
-                <p>Уровень: <span id="greedLevel">1</span>/10</p>
-                <p>Увеличивает выигрыш на 10% за уровень</p>
-                <button id="upgradeGreed">УЛУЧШИТЬ (150 монет)</button>
-            </div>
-            <div>
-                <h3>⚡ Скорость</h3>
-                <p>Уровень: <span id="speedLevel">1</span>/5</p>
-                <p>Уменьшает время анимации на 20% за уровень</p>
-                <button id="upgradeSpeed">УЛУЧШИТЬ (200 монет)</button>
-            </div>
-        </div>
-
-        <div id="notification"></div>
     </div>
 
     <script>
-        // Инициализация состояния
-        let state = JSON.parse(localStorage.getItem('casinoState')) || {
-            balance: 100,
-            gamesPlayed: 0,
-            totalWon: 0,
-            wins: 0,
-            luckLevel: 1,
-            greedLevel: 1,
-            speedLevel: 1,
-            lastDailyBonus: 0,
-            starterBonusTaken: false
-        };
-
-        // Элементы DOM
-        const balanceEl = document.getElementById('balance');
-        const gamesPlayedEl = document.getElementById('gamesPlayed');
-        const totalWonEl = document.getElementById('totalWon');
-        const winRateEl = document.getElementById('winRate');
-        const slots = [document.getElementById('slot1'), document.getElementById('slot2'), document.getElementById('slot3')];
-        const playButton = document.getElementById('playButton');
-        const starterBonusButton = document.getElementById('starterBonus');
-        const dailyBonusButton = document.getElementById('dailyBonus');
-        const upgradeLuckButton = document.getElementById('upgradeLuck');
-        const upgradeGreedButton = document.getElementById('upgradeGreed');
-        const upgradeSpeedButton = document.getElementById('upgradeSpeed');
-        const luckLevelEl = document.getElementById('luckLevel');
-        const greedLevelEl = document.getElementById('greedLevel');
-        const speedLevelEl = document.getElementById('speedLevel');
-        const notificationEl = document.getElementById('notification');
-
-        // Обновление интерфейса
-        function updateUI() {
-            balanceEl.textContent = state.balance;
-            gamesPlayedEl.textContent = state.gamesPlayed;
-            totalWonEl.textContent = state.totalWon;
-            winRateEl.textContent = state.gamesPlayed ? ((state.wins / state.gamesPlayed) * 100).toFixed(1) + '%' : '0%';
-            luckLevelEl.textContent = state.luckLevel;
-            greedLevelEl.textContent = state.greedLevel;
-            speedLevelEl.textContent = state.speedLevel;
-            playButton.disabled = state.balance < 10;
-            starterBonusButton.disabled = state.starterBonusTaken;
-            dailyBonusButton.disabled = Date.now() - state.lastDailyBonus < 24 * 60 * 60 * 1000;
-            upgradeLuckButton.disabled = state.balance < 100 || state.luckLevel >= 10;
-            upgradeGreedButton.disabled = state.balance < 150 || state.greedLevel >= 10;
-            upgradeSpeedButton.disabled = state.balance < 200 || state.speedLevel >= 5;
-            localStorage.setItem('casinoState', JSON.stringify(state));
-        }
-
-        // Уведомления
-        function showNotification(message) {
-            notificationEl.textContent = message;
-            notificationEl.style.display = 'block';
-            setTimeout(() => notificationEl.style.display = 'none', 2000);
-        }
-
-        // Механика рулетки
-        function playGame() {
-            if (state.balance < 10) {
-                showNotification('Недостаточно монет!');
-                return;
-            }
-            state.balance -= 10;
-            state.gamesPlayed++;
-            playButton.disabled = true;
-            slots.forEach(slot => slot.classList.add('spinning'));
-
-            // Время анимации (в миллисекундах)
-            const baseAnimationTime = 1000;
-            const speedMultiplier = 1 - (state.speedLevel - 1) * 0.2;
-            const animationTime = baseAnimationTime * speedMultiplier;
-
-            // Вероятности с учетом удачи
-            const luckBonus = state.luckLevel * 5;
-            const outcomes = [
-                { value: 10, weight: 40 + luckBonus },
-                { value: 20, weight: 30 + luckBonus / 2 },
-                { value: -20, weight: 20 - luckBonus / 2 },
-                { value: -50, weight: 10 - luckBonus / 4 }
-            ];
-            const totalWeight = outcomes.reduce((sum, outcome) => sum + outcome.weight, 0);
-            let random = Math.random() * totalWeight;
-            let result;
-            for (const outcome of outcomes) {
-                random -= outcome.weight;
-                if (random <= 0) {
-                    result = outcome.value;
-                    break;
-                }
-            }
-
-            // Применение жадности
-            const greedMultiplier = 1 + (state.greedLevel - 1) * 0.1;
-            const finalResult = Math.round(result * greedMultiplier);
-
+        // Добавляем интерактивность
+        document.querySelector('.link-button').addEventListener('click', function(e) {
+            // Создаем эффект клика
+            this.style.transform = 'scale(0.95)';
             setTimeout(() => {
-                slots.forEach(slot => {
-                    slot.classList.remove('spinning');
-                    slot.textContent = finalResult > 0 ? `+${finalResult}` : finalResult;
-                });
-                state.balance += finalResult;
-                if (finalResult > 0) {
-                    state.totalWon += finalResult;
-                    state.wins++;
-                    showNotification(`Вы выиграли ${finalResult} монет!`);
-                } else {
-                    showNotification(`Вы потеряли ${-finalResult} монет!`);
-                }
-                updateUI();
-                playButton.disabled = false;
-            }, animationTime);
-        }
-
-        // Бонусы
-        starterBonusButton.addEventListener('click', () => {
-            if (!state.starterBonusTaken) {
-                state.balance += 500;
-                state.starterBonusTaken = true;
-                showNotification('Получено 500 монет!');
-                updateUI();
-            }
+                this.style.transform = '';
+            }, 150);
         });
 
-        dailyBonusButton.addEventListener('click', () => {
-            if (Date.now() - state.lastDailyBonus >= 24 * 60 * 60 * 1000) {
-                state.balance += 100;
-                state.lastDailyBonus = Date.now();
-                showNotification('Получено 100 монет!');
-                updateUI();
-            }
+        // Анимация при загрузке
+        window.addEventListener('load', function() {
+            document.querySelector('.container').style.opacity = '0';
+            setTimeout(() => {
+                document.querySelector('.container').style.opacity = '1';
+            }, 100);
         });
-
-        // Улучшения
-        upgradeLuckButton.addEventListener('click', () => {
-            if (state.balance >= 100 && state.luckLevel < 10) {
-                state.balance -= 100;
-                state.luckLevel++;
-                showNotification('Удача улучшена!');
-                updateUI();
-            }
-        });
-
-        upgradeGreedButton.addEventListener('click', () => {
-            if (state.balance >= 150 && state.greedLevel < 10) {
-                state.balance -= 150;
-                state.greedLevel++;
-                showNotification('Жадность улучшена!');
-                updateUI();
-            }
-        });
-
-        upgradeSpeedButton.addEventListener('click', () => {
-            if (state.balance >= 200 && state.speedLevel < 5) {
-                state.balance -= 200;
-                state.speedLevel++;
-                showNotification('Скорость улучшена!');
-                updateUI();
-            }
-        });
-
-        playButton.addEventListener('click', playGame);
-
-        // Инициализация
-        updateUI();
     </script>
 </body>
 </html>
